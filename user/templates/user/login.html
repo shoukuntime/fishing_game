@@ -1,0 +1,31 @@
+<section class="hero is-info is-fullheight">
+    {% extends "base.html" %}
+    {% block content %}
+
+    <div class="box" style="margin: auto 20%;">
+        <div class="title">登入頁面</div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="field">
+                <label for="username" class="label">帳號</label>
+                <div class="control">
+                    <input class='input' type="text" name="username" id="username" value="{{user.username}}">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="password" class="label">密碼</label>
+                <div class="control">
+                    <input class='input' type="password" name="password" id="password">
+                </div>
+            </div>
+            <p>
+                <input type="submit" class="button is-primary" name="login" value="確認">
+                <button type="reset" class="button">清除</button>
+            </p>
+            <p class="message">{{message}}</p>
+        </form>
+    </div>
+
+    {% endblock %}
+</section>

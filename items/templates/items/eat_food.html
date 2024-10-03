@@ -1,0 +1,31 @@
+<section class="hero is-info is-fullheight">
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="box" style="margin: auto 20%;">
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="title">食用</div>
+            <div class="field">
+                <label class="label" for="item">選擇食物：</label>
+                <div class="select">
+                    <select name="item" id="item">
+                        {% for food in food_items %}
+                        <option value="{{ food.item }}">{{ food.item }} (剩餘數量: {{ food.quantity }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="quantity">選擇數量：</label>
+                <input type="number" class="input" name="quantity" id="quantity" min="1" max="{{ food.quantity }}"
+                    value="1" required>
+            </div>
+            <button class="button" type="submit">吃食物</button>
+        </form>
+
+        <p>{{ message }}</p>
+    </div>
+    {% endblock %}
+</section>

@@ -1,0 +1,28 @@
+<section class="hero is-info is-fullheight">
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="box" style="margin: auto 20%;">
+        <div class="title">物品 <a class="button" href="{% url 'eat_food' %}">食用</a> <a class="button is-static">製作</a> <a
+                class="button" href="{% url 'money' %}">換錢</a> <a class="button is-static">出價</a></div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table class="table">
+                <tr>
+                    <th>名稱</th>
+                    <th>數量</th>
+                    <th>簡述</th>
+
+                </tr>
+                {% for i in items %}
+                <tr>
+                    {% for j in i %}
+                    <td>{{j}}</td>
+                    {% endfor %}
+                </tr>
+
+                {% endfor %}
+            </table>
+        </form>
+    </div>
+    {% endblock %}
+</section>

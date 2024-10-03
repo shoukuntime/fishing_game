@@ -1,0 +1,26 @@
+<section class="hero is-info is-fullheight">
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="box" style="margin: auto 20%;">
+        <div class="title">釣魚</div>
+        <div>選擇一個湖來開始釣魚，最多只能釣1小時</div>
+        <form action="{% url 'fishing_view' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="start_fishing">
+            <button class="button is-danger" name="lake" value="天一湖">天一湖</button>
+            <button class="button is-warning" name="lake" value="天心湖">天心湖</button>
+            <button class="button" style="background-color: rgb(238, 247, 70);" name="lake" value="天正湖">天正湖</button>
+            <button class="button is-success" name="lake" value="天苑湖">天苑湖</button>
+            <button class="button is-info" name="lake" value="天聖湖">天聖湖</button>
+            <button class="button is-link" name="lake" value="天情湖">天情湖</button>
+            <button class="button is-static" style="background-color: rgb(218, 70, 247); color: white;" name="lake"
+                value="天神湖">天神湖</button>
+        </form>
+        <div style="color: red;"><b>{{ message }}</b></div>
+        <div style="color: red;"><b>{{ message1 }}</b></div>
+        {% for i in list %}
+        <div>釣到了<b>{{i}}</b></div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+</section>

@@ -1,0 +1,16 @@
+<section class="hero is-info is-fullheight">
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="box" style="margin: auto 20%;">
+        <div class="title">釣魚狀態</div>
+        <div style="color: green;"><b>{{ message }}</b></div>
+
+        <p>你現在正在釣魚，隨時可以停止釣魚。</p>
+        <form action="{% url 'fishing_view' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="stop_fishing">
+            <button class="button is-success" type="submit">停止釣魚</button>
+        </form>
+    </div>
+    {% endblock %}
+</section>

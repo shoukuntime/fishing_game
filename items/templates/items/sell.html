@@ -1,0 +1,31 @@
+<section class="hero is-info is-fullheight">
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="box" style="margin: auto 20%;">
+        <form method="post">
+            {% csrf_token %}
+            <div class="title">換錢</div>
+            <div class="field">
+                <label class="label" for="item_name">選擇物品：</label>
+                <div class="select">
+                    <select name="item_name" id="item_name">
+                        {% for item in sellable_items %}
+                        <option value="{{ item.item }}">{{ item.item }} x {{ item.quantity }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="quantity_to_sell">數量：</label>
+                    <input type="number" class="input" name="quantity_to_sell" min="1" max="{{ item.quantity }}">
+                </div>
+
+                <button class="button" type="submit">賣出</button>
+
+                {% if message %}
+                <p>{{ message }}</p>
+                {% endif %}
+        </form>
+    </div>
+    {% endblock %}
+</section>

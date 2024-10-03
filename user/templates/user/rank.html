@@ -1,0 +1,24 @@
+<section class="hero is-info is-fullheight">
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="box" style="margin: auto 20%;">
+        <div class="title">排行榜</div>
+        <table class="table">
+            <tr>
+                <th>排行</th>
+                <th>名字</th>
+                <th>財富</th>
+            </tr>
+            {% for r in rank %}
+            <tr>
+                {% for i in r %}
+                <td>{{i}}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+
+    {% endblock %}
+</section>

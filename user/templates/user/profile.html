@@ -1,0 +1,15 @@
+<section class="hero is-info is-fullheight">
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="box" style="margin: auto 20%;">
+        <div class="title">個人資訊</div>
+        <ul>
+            <li>使用者名稱:{{user.username}}</li>
+            <li>加入時間:{{user.date_joined}}</li>
+            <li>金錢:{{money}}</li>
+            <li>體力:{{health}}</li>
+        </ul>
+    </div>
+
+    {% endblock %}
+</section>
